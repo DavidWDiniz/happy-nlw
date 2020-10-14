@@ -22,6 +22,7 @@ export const AppSidebar = styled.aside`
             height: 48px;
         
             border: 0;
+            outline: none;
           
             background: #12AFCB;
             border-radius: 16px;
