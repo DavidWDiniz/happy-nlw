@@ -2,10 +2,10 @@ import React from "react";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 
-import OrphanagesMap from "./pages/OrphanagesMap";
-import OrphanageDetails from "./pages/OrphanageDetails";
-import SelectMapPosition from "./pages/CreateOrphanege/SelectMapPosition";
-import OrphanageData from "./pages/CreateOrphanege/OrphanageData";
+import OrphanagesMap from "./pages/OrphanagesMap/OrphanagesMap";
+import OrphanageDetails from "./pages/OrphanageDetails/OrphanageDetails";
+import SelectMapPosition from "./pages/CreateOrphanage/SelectMapPosition/SelectMapPosition";
+import OrphanageData from "./pages/CreateOrphanage/OrphanageData/OrphanageData";
 import Header from "./components/Header";
 
 const {Navigator, Screen} = createStackNavigator();

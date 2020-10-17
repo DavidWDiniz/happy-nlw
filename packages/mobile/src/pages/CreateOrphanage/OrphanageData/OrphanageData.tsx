@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import {Alert, Image, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {Alert, Switch} from "react-native";
 import Icon from "react-native-vector-icons/Feather";
-import {RectButton} from "react-native-gesture-handler";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
-import api from "../../services/api";
+
+import api from "../../../services/api";
+
+import {Title, Container, Input, ImagesInput, Label, NextButton, NextButtonText, SwitchContainer, UploadedImage, UploadedImagesContainer} from "./styles";
 
 interface OrphanageDataRouteParams {
     position: {
@@ -72,19 +74,18 @@ const OrphanageData = () => {
     }
 
     return (
-        <ScrollView style={styles.container} contentContainerStyle={{padding: 24}}>
-            <Text style={styles.title}>Dados</Text>
+        <Container contentContainerStyle={{padding: 24}}>
+            <Title>Dados</Title>
 
-            <Text style={styles.label}>Nome</Text>
-            <TextInput
-                style={styles.input}
+            <Label>Nome</Label>
+            <Input
                 value={name}
                 onChangeText={setName}
             />
 
-            <Text style={styles.label}>Sobre</Text>
-            <TextInput
-                style={[styles.input, {height: 110}]}
+            <Label>Sobre</Label>
+            <Input
+                style={{height: 110}}
                 multiline
                 value={about}
                 onChangeText={setAbout}
@@ -95,141 +96,54 @@ const OrphanageData = () => {
                 style={styles.input}
             />*/}
 
-            <Text style={styles.label}>Fotos</Text>
+            <Label>Fotos</Label>
 
-            <View style={styles.uploadedImagesContainer}>
+            <UploadedImagesContainer>
                 {images.map(image => {
                     return (
-                        <Image
+                        <UploadedImage
                             key={image}
                             source={{uri: image}}
-                            style={styles.uploadedImage}
                         />
                     );
                 })}
-            </View>
+            </UploadedImagesContainer>
 
-            <TouchableOpacity style={styles.imagesInput} onPress={handleSelectImages}>
+            <ImagesInput onPress={handleSelectImages}>
                 <Icon name="plus" size={24} color="#15B6D6"/>
-            </TouchableOpacity>
+            </ImagesInput>
 
-            <Text style={styles.title}>Visitação</Text>
+            <Title>Visitação</Title>
 
-            <Text style={styles.label}>Instruções</Text>
-            <TextInput
-                style={[styles.input, {height: 110}]}
+            <Label>Instruções</Label>
+            <Input
+                style={{height: 110}}
                 multiline
                 value={instructions}
                 onChangeText={setInstructions}
             />
 
-            <Text style={styles.label}>Horario de visitas</Text>
-            <TextInput
-                style={styles.input}
+            <Label>Horario de visitas</Label>
+            <Input
                 value={opening_hours}
                 onChangeText={setOpeningHours}
             />
 
-            <View style={styles.switchContainer}>
-                <Text style={styles.label}>Atende final de semana?</Text>
+            <SwitchContainer>
+                <Label>Atende final de semana?</Label>
                 <Switch
                     thumbColor="#fff"
                     trackColor={{false: "#ccc", true: "#39CC83"}}
                     value={open_on_weekends}
                     onValueChange={setOpenOnWeekends}
                 />
-            </View>
+            </SwitchContainer>
 
-            <RectButton style={styles.nextButton} onPress={handleCreateOrphanage}>
-                <Text style={styles.nextButtonText}>Cadastrar</Text>
-            </RectButton>
-        </ScrollView>
+            <NextButton onPress={handleCreateOrphanage}>
+                <NextButtonText>Cadastrar</NextButtonText>
+            </NextButton>
+        </Container>
     )
 }
 
 export default OrphanageData;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-
-    title: {
-        color: "#5c8599",
-        fontSize: 24,
-        fontFamily: "Nunito-Bold",
-        marginBottom: 32,
-        paddingBottom: 24,
-        borderBottomWidth: 0.8,
-        borderBottomColor: "#D3E2E6"
-    },
-
-    label: {
-        color: "#8fa7b3",
-        fontFamily: "Nunito-SemiBold",
-        marginBottom: 8,
-    },
-
-    comment: {
-        fontSize: 11,
-        color: "#8fa7b3",
-    },
-
-    input: {
-        backgroundColor: "#fff",
-        borderWidth: 1.4,
-        borderColor: "#d3e2e6",
-        borderRadius: 20,
-        height: 56,
-        paddingVertical: 18,
-        paddingHorizontal: 24,
-        marginBottom: 16,
-        textAlignVertical: "top",
-    },
-
-    uploadedImagesContainer: {
-        flexDirection: "row",
-    },
-
-    uploadedImage: {
-        width: 64,
-        height: 64,
-        borderRadius: 20,
-        marginBottom: 32,
-        marginRight: 8,
-    },
-
-    imagesInput: {
-        backgroundColor: "rgba(255, 255, 255, 0.5)",
-        borderStyle: "dashed",
-        borderColor: "#96D2F0",
-        borderWidth: 1.4,
-        borderRadius: 20,
-        height: 56,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 32,
-    },
-
-    switchContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        marginTop: 16,
-    },
-
-    nextButton: {
-        backgroundColor: "#15c3d6",
-        borderRadius: 20,
-        justifyContent: "center",
-        alignItems: "center",
-        height: 56,
-        marginTop: 32,
-    },
-
-    nextButtonText: {
-        fontFamily: "Nunito-ExtraBold",
-        fontSize: 16,
-        color: "#FFF",
-    }
-})
