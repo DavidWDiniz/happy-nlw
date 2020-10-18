@@ -49,7 +49,7 @@ export const ContentWrapper = styled.div`
 
 export const Location = styled.div`
     position: absolute;
-    right: 0;
+    right: 640px;
     top: 0;
     
     font-size: 24px;
@@ -58,7 +58,7 @@ export const Location = styled.div`
     display: flex;
     flex-direction: column;
     
-    text-align: right;
+    text-align: left;
     
     strong {
         font-weight: 800;
@@ -84,5 +84,30 @@ export const EnterApp = styled(Link)`
     
     &:hover {
         background: #96FEFF;
+    }
+`;
+
+export const ConfirmButton = styled.button`
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+
+    width: 240px;
+    height: 64px;
+    border: 0;
+    cursor: pointer;
+    background: #12D4E0;
+
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-weight: 800;
+    outline: none;
+  
+    transition: background-color 0.2s;
+    
+    &:hover {
+        background: #96FEFF;
+        color: #15C3D6;
     }
 `;

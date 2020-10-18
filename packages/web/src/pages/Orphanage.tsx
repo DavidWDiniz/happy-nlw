@@ -3,16 +3,18 @@ import { FiClock, FiInfo} from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import {useParams} from "react-router-dom";
 
-import {Hour, Images, MapContainer, OpenDetails, CloseOnWeekends, OpenOnWeekends, OrphanageDetails, OrphanageDetailsContent, PageOrphanage} from "../styles/pages/orphanage";
+import {Hour, Images, MapContainer, OpenDetails, CloseOnWeekends, OpenOnWeekends, OrphanageDetails, OrphanageDetailsContent, PageOrphanage, ContactButton} from "../styles/pages/orphanage";
 import Sidebar from "../components/Sidebar";
 import mapIcon from "../utils/mapIcon";
 import api from "../services/api";
+import {FaWhatsapp} from "react-icons/all";
 
 interface Orphanage {
     longitude: number;
     latitude: number;
     name: string;
     about: string;
+    whatsapp: number;
     instructions: string;
     opening_hours: string;
     open_on_weekend: string;
@@ -27,7 +29,6 @@ interface OrphanageParams {
 }
 
 export default function Orphanage() {
-
     const params = useParams<OrphanageParams>();
     const [orphanage, setOrphanage] = useState<Orphanage>();
     const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -40,6 +41,10 @@ export default function Orphanage() {
 
     if (!orphanage) {
         return <p>Carregando...</p>;
+    }
+
+    function handleClickToWhatsapp() {
+        window.open(`https://wa.me/${orphanage?.whatsapp}`);
     }
 
     return (
@@ -120,10 +125,10 @@ export default function Orphanage() {
                             )}
                         </OpenDetails>
 
-                        {/*<ContactButton type="button">
+                        <ContactButton type="button" onClick={handleClickToWhatsapp}>
                             <FaWhatsapp size={20} color="#FFF" />
                             Entrar em contato
-                        </ContactButton>*/}
+                        </ContactButton>
                     </OrphanageDetailsContent>
                 </OrphanageDetails>
             </main>

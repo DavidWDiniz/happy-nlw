@@ -17,6 +17,7 @@ export default function CreateOrphanage() {
 
     const [name, setName] = useState("");
     const [about, setAbout] = useState("");
+    const [whatsapp, setWhatsapp] = useState("");
     const [instructions, setInstructions] = useState("");
     const [opening_hours, setOpeningHours] = useState("");
     const [open_on_weekends, setOpenOnWeekends] = useState(true);
@@ -42,7 +43,7 @@ export default function CreateOrphanage() {
         const selectedImagesPreview = selectedImages.map(image => {
             return URL.createObjectURL(image);
         });
-        setPreviewImages(selectedImagesPreview)
+        setPreviewImages(selectedImagesPreview);
     }
 
     async function handleSubmit(event: FormEvent) {
@@ -53,6 +54,7 @@ export default function CreateOrphanage() {
 
         data.append("name", name);
         data.append("about", about);
+        data.append("whatsapp", String(whatsapp))
         data.append("latitude", String(latitude));
         data.append("longitude", String(longitude));
         data.append("instructions", instructions);
@@ -64,8 +66,7 @@ export default function CreateOrphanage() {
         });
 
         await api.post("orphanages", data);
-        alert("Cadastro realizado com sucesso!");
-        history.push("/app");
+        history.push("/orphanages/register");
     }
 
     return (
@@ -79,7 +80,7 @@ export default function CreateOrphanage() {
                         <legend>Dados</legend>
 
                         <Map
-                            center={[-27.2092052,-49.6401092]}
+                            center={[-20.3823676, -43.4163019]}
                             style={{ width: "100%", height: 280 }}
                             zoom={15}
                             onClick={handleMapClick}
@@ -99,6 +100,11 @@ export default function CreateOrphanage() {
                         <InputBlock>
                             <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
                             <textarea id="name" maxLength={300} value={about} onChange={event => setAbout(event.target.value)} />
+                        </InputBlock>
+
+                        <InputBlock>
+                            <label htmlFor="whatsapp">Whatsapp</label>
+                            <input type="number" id="whatsapp" value={whatsapp} onChange={event => setWhatsapp(event.target.value)} />
                         </InputBlock>
 
                         <InputBlock>

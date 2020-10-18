@@ -24,7 +24,7 @@ export default {
     },
 
     async create(request: Request, response: Response) {
-        const {name, latitude, longitude, about, instructions, opening_hours, open_on_weekends} = request.body;
+        const {name, latitude, longitude, about, whatsapp, instructions, opening_hours, open_on_weekends} = request.body;
 
         const orphanagesRepository = getRepository(Orphanage);
 
@@ -41,6 +41,7 @@ export default {
             latitude,
             longitude,
             about,
+            whatsapp,
             instructions,
             opening_hours,
             open_on_weekends: open_on_weekends === "true",
@@ -52,6 +53,7 @@ export default {
             latitude: Yup.number().required(),
             longitude: Yup.number().required(),
             about: Yup.string().required().max(300),
+            whatsapp: Yup.number(),
             instructions: Yup.string().required(),
             opening_hours: Yup.string().required(),
             open_on_weekends: Yup.boolean().required(),

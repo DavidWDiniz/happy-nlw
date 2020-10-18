@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import {Popup} from "react-leaflet";
+import {Popup, PopupProps} from "react-leaflet";
 
 export const PageMap = styled.div`
     width: 100vw;
@@ -72,7 +72,7 @@ export const CreateOrphanage = styled(Link)`
     }
 `;
 
-export const MapPopup = styled(Popup)`
+export const MapPopup = styled(Popup)<PopupProps>`
     .leaflet-popup-content-wrapper {
         background: rgba(255, 255, 255, 0.8);
         border-radius: 20px;

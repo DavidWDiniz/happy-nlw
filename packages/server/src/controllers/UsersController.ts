@@ -21,9 +21,15 @@ export default {
     },
 
     async create(request: Request, response: Response) {
-        const {name, email, password, admin} = request.body;
+        const {name, email, password} = request.body;
 
         const usersRepository = getRepository(User);
+
+        const existsUser = usersRepository.findOne({email});
+
+        if (existsUser) {
+            throw new Error("This email is already in use");
+        }
 
         const hashedPassword = await hash(password, 8);
 
@@ -31,14 +37,12 @@ export default {
             name,
             email,
             password: hashedPassword,
-            admin: admin === "true",
         };
 
         const schema = Yup.object().shape({
             name: Yup.string().required(),
             email: Yup.string().email().required(),
             password: Yup.string().required(),
-            admin: Yup.boolean(),
         });
 
         await schema.validate(data, {abortEarly: false});

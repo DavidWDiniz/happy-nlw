@@ -1,12 +1,20 @@
 import React from "react";
 
-import {ContentWrapper, EnterApp, Location, PageLanding} from "../styles/pages/landing";
+import {ContentWrapper, EnterApp, Location, PageLanding, ConfirmButton} from "../styles/pages/landing";
 import logoImg from "../images/logo.svg";
 import {FiArrowRight} from "react-icons/all";
+import { useHistory } from "react-router-dom";
+
 
 const Landing: React.FC = () => {
+    const history = useHistory();
+
+    function handleClickToLogin() {
+        history.push("/signin");
+    }
+
     return (
-        <PageLanding className="page-landing">
+        <PageLanding>
             <ContentWrapper>
                 <img src={logoImg} alt="Happy"/>
 
@@ -23,6 +31,9 @@ const Landing: React.FC = () => {
                 <EnterApp to="/app">
                     <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
                 </EnterApp>
+                <ConfirmButton type="button" onClick={handleClickToLogin}>
+                    Acesso restrito
+                </ConfirmButton>
             </ContentWrapper>
         </PageLanding>
     );

@@ -6,7 +6,6 @@ export default {
             id: users.id,
             name: users.name,
             email: users.email,
-            admin: users.admin,
         };
     },
 

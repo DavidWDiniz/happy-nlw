@@ -94,6 +94,7 @@ export const InputBlock = styled.div`
         display: none;
     }
 `;
+
 export const ImagesContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
