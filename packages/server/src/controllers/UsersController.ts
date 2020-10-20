@@ -25,12 +25,6 @@ export default {
 
         const usersRepository = getRepository(User);
 
-        const existsUser = usersRepository.findOne({email});
-
-        if (existsUser) {
-            throw new Error("This email is already in use");
-        }
-
         const hashedPassword = await hash(password, 8);
 
         const data = {

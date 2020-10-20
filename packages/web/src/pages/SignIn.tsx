@@ -6,20 +6,18 @@ import {PageSignIn, ContentWrapper, Background, Location, InputBlock, SignInForm
 import {FiArrowLeft} from "react-icons/all";
 
 import { useHistory } from "react-router-dom";
-
+import {useAuth} from "../services/auth";
 
 const SignIn = () => {
     const history = useHistory();
+    const {signIn} = useAuth();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-
-        const data = new FormData();
-
-        data.append("email", email);
-        data.append("password", password);
-
+        await signIn({email, password});
         history.push("/dashboard");
     }
     return (

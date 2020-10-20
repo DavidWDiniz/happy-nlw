@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch} from "react-router-dom";
 
 import Landing from "./pages/Landing";
 import OrphanagesMap from "./pages/OrphanagesMap";
@@ -8,6 +8,7 @@ import CreateOrphanage from "./pages/CreateOrphanage";
 import RegisterMessage from "./pages/RegisterMessage";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
+import Route from "./Route";
 
 const Routes: React.FC = () => {
     return (
@@ -20,7 +21,7 @@ const Routes: React.FC = () => {
                 <Route path="/orphanages/:id" component={Orphanage} />
 
                 <Route path="/signin" component={SignIn} />
-                <Route path="/dashboard" component={Dashboard} />
+                <Route isPrivate path="/dashboard" component={Dashboard} />
             </Switch>
         </BrowserRouter>
     );
