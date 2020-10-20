@@ -15,7 +15,20 @@ export const AppSidebar = styled.aside`
         width: 48px;
     }
     
-    footer {
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        button + button {
+            margin-top: 16px;
+        }
+        
+        button.active {
+            background: #FFD666;
+        }
+    }
     
         a, button {
             width: 48px;
@@ -39,5 +52,5 @@ export const AppSidebar = styled.aside`
                 background: #17D6EB;
             }
         }
-    }
+    
 `;

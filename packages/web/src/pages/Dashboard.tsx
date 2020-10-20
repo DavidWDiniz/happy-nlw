@@ -1,13 +1,18 @@
 import React from "react";
-import {useAuth} from "../services/auth";
+import Sidebar from "../components/Sidebar";
+
+import {PageDashboard} from "../styles/pages/dashboard";
 
 const Dashboard = () => {
-    const {signOut} = useAuth();
     return (
-        <>
-            <h1>Dashboard</h1>
-            <button onClick={signOut}>Sair</button>
-        </>
+        <PageDashboard>
+
+            <Sidebar dashboard />
+
+            <main>
+                <h1>Dashboard</h1>
+            </main>
+        </PageDashboard>
     );
 }
 
