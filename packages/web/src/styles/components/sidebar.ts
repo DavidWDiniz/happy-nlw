@@ -30,27 +30,27 @@ export const AppSidebar = styled.aside`
         }
     }
     
-        a, button {
-            width: 48px;
-            height: 48px;
+    a, button {
+        width: 48px;
+        height: 48px;
+    
+        border: 0;
+        outline: none;
+      
+        background: #12AFCB;
+        border-radius: 16px;
+      
+        cursor: pointer;
+      
+        transition: background-color 0.2s;
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
-            border: 0;
-            outline: none;
-          
-            background: #12AFCB;
-            border-radius: 16px;
-          
-            cursor: pointer;
-          
-            transition: background-color 0.2s;
-          
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            &:hover {  
-                background: #17D6EB;
-            }
+        &:hover {  
+            background: #17D6EB;
         }
+    }
     
 `;

@@ -7,13 +7,14 @@ import {AppSidebar} from "../styles/components/sidebar";
 import {useAuth} from "../services/auth";
 
 interface SidebarProps {
-    dashboard?: boolean;
+    isDashboard?: boolean;
+    initialState?: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({dashboard}) => {
+const Sidebar: React.FC<SidebarProps> = ({isDashboard, initialState}) => {
     const {goBack} = useHistory();
     const {signOut} = useAuth();
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(!!initialState);
 
     function handleClick() {
         setActive(!active);
@@ -23,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({dashboard}) => {
     return (
         <AppSidebar>
             <img src={mapMarkerImg} alt="Happy" />
-            {dashboard && (
+            {isDashboard && (
                 <div>
                     <button className={active ? "active" : ""} type="button" onClick={handleClick}>
                         <FiMapPin size={24} color={active ? "#0089A5" : "#FFF"}/>
@@ -34,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({dashboard}) => {
                 </div>
             )}
             <footer>
-                {!dashboard ? (
+                {!isDashboard ? (
                     <button type="button" onClick={goBack}>
                         <FiArrowLeft size={24} color="#FFF"/>
                     </button>
