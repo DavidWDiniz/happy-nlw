@@ -4,26 +4,46 @@ export const PageDashboard = styled.div`
     min-height: 100vh;
     display: flex;
     
-    main {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-wrap: wrap;
+    > div {
+        width: 1120px;
+        margin: 64px auto;
+    
+        overflow: hidden;
+    
+        h1 {
+            color: #4D6F80;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 34px;
+        }
         
-        flex: 1;
+        hr {
+            width: 100%;
+            height: 1px;
+            border: 0;
+            background: #D3E2E6;
+            margin: 32px 0;
+        }
+        
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
     }
+    
+    
+    
 `;
 
 export const MapContainer = styled.div`
-    margin-top: 64px;
     background: #FFF;
     border: 1px solid #D3E2E5;
     border-radius: 20px;
-    margin-left: 96px;
-    
-    & + & {
-        margin-left: 32px;
-    }
+    margin-bottom: 32px;
+    z-index: 1;
     
     footer {
         position: relative;

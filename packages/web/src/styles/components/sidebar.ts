@@ -5,6 +5,7 @@ export const AppSidebar = styled.aside`
     height: 100%;
     padding: 32px 24px;
     background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
+    z-index: 5;
   
     display: flex;
     flex-direction: column;

@@ -14,10 +14,15 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({isDashboard, initialState}) => {
     const {goBack} = useHistory();
     const {signOut} = useAuth();
-    const [active, setActive] = useState(!!initialState);
+    const [active, setActive] = useState(initialState);
 
-    function handleClick() {
-        setActive(!active);
+    function handleButtonRegisteredClick() {
+        !active && setActive(!active)
+        //goback();
+    }
+
+    function handleButtonPendingClick() {
+        active && setActive(!active)
         //goBack();
     }
 
@@ -26,10 +31,10 @@ const Sidebar: React.FC<SidebarProps> = ({isDashboard, initialState}) => {
             <img src={mapMarkerImg} alt="Happy" />
             {isDashboard && (
                 <div>
-                    <button className={active ? "active" : ""} type="button" onClick={handleClick}>
+                    <button className={active ? "active" : ""} type="button" onClick={handleButtonRegisteredClick}>
                         <FiMapPin size={24} color={active ? "#0089A5" : "#FFF"}/>
                     </button>
-                    <button className={active ? "" : "active"} type="button" onClick={handleClick}>
+                    <button className={active ? "" : "active"} type="button" onClick={handleButtonPendingClick}>
                         <FiAlertCircle size={24} color={active ? "#FFF" : "#0089A5"}/>
                     </button>
                 </div>
