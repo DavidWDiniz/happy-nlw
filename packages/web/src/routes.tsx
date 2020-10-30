@@ -8,7 +8,9 @@ import CreateOrphanage from "./pages/CreateOrphanage";
 import RegisterMessage from "./pages/RegisterMessage";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
+import EditOrphanage from "./pages/EditOrphanage";
 import Route from "./Route";
+
 
 const Routes: React.FC = () => {
     return (
@@ -22,6 +24,8 @@ const Routes: React.FC = () => {
 
                 <Route path="/signin" component={SignIn} />
                 <Route isPrivate path="/dashboard" component={Dashboard} />
+                <Route isPrivate path="/orphanage/update/:id" component={EditOrphanage} />
+
             </Switch>
         </BrowserRouter>
     );

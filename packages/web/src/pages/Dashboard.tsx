@@ -53,7 +53,7 @@ const Dashboard = () => {
                                 <footer>
                                     <p>{orphanage.name}</p>
                                     <div>
-                                        <Link to="/">
+                                        <Link to={`orphanage/update/${orphanage.id}`}>
                                             <FiEdit3 size={24} color="#15C3D6"/>
                                         </Link>
                                         <Link to="/">

@@ -17,7 +17,7 @@ interface Orphanage {
     whatsapp: number;
     instructions: string;
     opening_hours: string;
-    open_on_weekend: string;
+    open_on_weekends: string;
     images: Array<{
         id: number;
         url: string;
@@ -46,7 +46,6 @@ export default function Orphanage() {
     function handleClickToWhatsapp() {
         window.open(`https://wa.me/${orphanage?.whatsapp}`);
     }
-
     return (
         <PageOrphanage>
 
@@ -110,7 +109,7 @@ export default function Orphanage() {
                                 Segunda à Sexta <br />
                                 {orphanage.opening_hours}
                             </Hour>
-                            {orphanage.open_on_weekend ? (
+                            {orphanage.open_on_weekends ? (
                                 <OpenOnWeekends>
                                     <FiInfo size={32} color="#39CC83" />
                                     Atendemos <br />

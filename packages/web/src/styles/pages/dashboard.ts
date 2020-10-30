@@ -6,8 +6,8 @@ export const PageDashboard = styled.div`
     
     > div {
         width: 1120px;
-        margin: 64px auto;
-    
+        margin: 64px 32px;
+
         overflow: hidden;
     
         h1 {

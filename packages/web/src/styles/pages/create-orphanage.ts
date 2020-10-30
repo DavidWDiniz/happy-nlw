@@ -5,6 +5,14 @@ export const PageCreateOrphanage = styled.div`
 
     main {
       flex: 1;
+      
+      p {
+          color: #8FA7B2;
+          text-align: center;
+          margin: 64px auto;
+          font-size: 18px;
+
+      }
     }
 
 `;

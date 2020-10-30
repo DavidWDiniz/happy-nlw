@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const AppSidebar = styled.aside`
-    position: fixed;
-    height: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
     padding: 32px 24px;
     background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
     z-index: 5;
