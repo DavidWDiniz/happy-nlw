@@ -56,7 +56,7 @@ const Dashboard = () => {
                                         <Link to={`orphanage/update/${orphanage.id}`}>
                                             <FiEdit3 size={24} color="#15C3D6"/>
                                         </Link>
-                                        <Link to="/">
+                                        <Link to={{pathname: `orphanage/delete/${orphanage.id}`, state: { name: orphanage.name}}} >
                                             <FiTrash size={24} color="#15C3D6"/>
                                         </Link>
                                     </div>

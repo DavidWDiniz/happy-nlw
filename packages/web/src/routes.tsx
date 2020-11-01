@@ -10,6 +10,7 @@ import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
 import EditOrphanage from "./pages/EditOrphanage";
 import Route from "./Route";
+import DeleteMessage from "./pages/DeleteMessage";
 
 
 const Routes: React.FC = () => {
@@ -25,6 +26,7 @@ const Routes: React.FC = () => {
                 <Route path="/signin" component={SignIn} />
                 <Route isPrivate path="/dashboard" component={Dashboard} />
                 <Route isPrivate path="/orphanage/update/:id" component={EditOrphanage} />
+                <Route isPrivate path="/orphanage/delete/:id" component={DeleteMessage} />
 
             </Switch>
         </BrowserRouter>
