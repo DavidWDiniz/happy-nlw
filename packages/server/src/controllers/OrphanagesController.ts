@@ -5,7 +5,8 @@ import * as Yup from "yup";
 import orphanageView from "../views/orphanages_view";
 import Orphanage from "../models/Orphanage";
 import Image from "../models/Image";
-
+import path from "path";
+import fs from "fs";
 
 export default {
     async index(request: Request, response: Response) {
@@ -127,5 +128,27 @@ export default {
         await imagesRepository.save(images);
 
         return response.status(201).json(orphanage);
-    }
+    },
+
+    async delete(request: Request, response: Response) {
+        const {id} = request.params;
+        const orphanagesRepository = getRepository(Orphanage);
+        const orphanage = await orphanagesRepository.findOneOrFail(id, {
+            relations: ["images"],
+        });
+
+        orphanage.images.map(async image => {
+            fs.readdir(path.join(__dirname, "..", "..", "uploads"), (err) => {
+                if (err) {
+                    throw err;
+                }
+                fs.unlink(path.join(__dirname, "..", "..", "uploads", image.path), err => {
+                    if (err) throw err;
+                });
+            });
+        });
+
+        await orphanagesRepository.remove(orphanage);
+        return response.status(201).json({message: "orphanage deleted"});
+    },
 }
