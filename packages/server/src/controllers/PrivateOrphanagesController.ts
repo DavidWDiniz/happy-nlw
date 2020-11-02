@@ -4,12 +4,15 @@ import * as Yup from "yup";
 
 import orphanageView from "../views/orphanages_view";
 import Orphanage from "../models/Orphanage";
+import Image from "../models/Image";
+import path from "path";
+import fs from "fs";
 
 export default {
     async index(request: Request, response: Response) {
         const orphanagesRepository = getRepository(Orphanage);
         const orphanages = await orphanagesRepository.find({
-            where: {accepted: true},
+            where: {accepted: false},
             relations: ["images"],
         });
         return response.json(orphanageView.renderMany(orphanages));
@@ -19,26 +22,21 @@ export default {
         const {id} = request.params;
         const orphanagesRepository = getRepository(Orphanage);
         const orphanage = await orphanagesRepository.findOneOrFail(id, {
-            where: {accepted: true},
+            where: {accepted: false},
             relations: ["images"],
         });
         return response.json(orphanageView.render(orphanage));
     },
 
-    async create(request: Request, response: Response) {
+    async update(request: Request, response: Response) {
+        const {id} = request.params;
         const {name, latitude, longitude, about, whatsapp, instructions, opening_hours, open_on_weekends, accepted} = request.body;
 
         const orphanagesRepository = getRepository(Orphanage);
-
-        const requestImages = request.files as Express.Multer.File[];
-
-        const images = requestImages.map(image => {
-            return {
-                path: image.filename
-            }
-        });
+        const imagesRepository = getRepository(Image);
 
         const data = {
+            id: Number(id),
             name,
             latitude,
             longitude,
@@ -48,10 +46,18 @@ export default {
             opening_hours,
             open_on_weekends: open_on_weekends === "true",
             accepted: accepted === "true",
-            images
         };
 
+        const requestImages = request.files as Express.Multer.File[];
+        const images = requestImages.map(image => {
+            return {
+                orphanage: data,
+                path: image.filename
+            }
+        });
+
         const schema = Yup.object().shape({
+            id: Yup.number().required(),
             name: Yup.string().required(),
             latitude: Yup.number().required(),
             longitude: Yup.number().required(),
@@ -72,7 +78,30 @@ export default {
         const orphanage = orphanagesRepository.create(data);
 
         await orphanagesRepository.save(orphanage);
+        await imagesRepository.save(images);
 
         return response.status(201).json(orphanage);
+    },
+
+    async delete(request: Request, response: Response) {
+        const {id} = request.params;
+        const orphanagesRepository = getRepository(Orphanage);
+        const orphanage = await orphanagesRepository.findOneOrFail(id, {
+            relations: ["images"],
+        });
+
+        orphanage.images.map(async image => {
+            fs.readdir(path.join(__dirname, "..", "..", "uploads"), (err) => {
+                if (err) {
+                    throw err;
+                }
+                fs.unlink(path.join(__dirname, "..", "..", "uploads", image.path), err => {
+                    if (err) throw err;
+                });
+            });
+        });
+
+        await orphanagesRepository.remove(orphanage);
+        return response.status(201).json({message: "orphanage deleted"});
     },
 }
