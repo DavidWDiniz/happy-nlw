@@ -1,10 +1,10 @@
-import React, {ChangeEvent, FormEvent, useEffect, useMemo, useState} from "react";
+import React, {ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useState} from "react";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import {useHistory, useParams} from "react-router-dom";
 
-import { FiPlus } from "react-icons/fi";
+import {FiCheck, FiPlus, FiX} from "react-icons/fi";
 
-import {ButtonSelect, ConfirmButton, CreateOrphanageForm, InputBlock, NewImage, PageCreateOrphanage, ImagesContainer} from "../styles/pages/create-orphanage";
+import {ButtonSelect, ConfirmButton, CreateOrphanageForm, InputBlock, NewImage, PageCreateOrphanage, ImagesContainer, RefuseButton} from "../styles/pages/create-orphanage";
 import Sidebar from "../components/Sidebar";
 import mapIcon from "../utils/mapIcon";
 import {LeafletMouseEvent} from "leaflet";
@@ -30,7 +30,7 @@ interface OrphanageParams {
     id: string;
 }
 
-const EditOrphanage = () => {
+const EditPendingOrphanage = () => {
     const history = useHistory();
     const params = useParams<OrphanageParams>();
     const [orphanage, setOrphanage] = useState<Orphanage>();
@@ -47,7 +47,7 @@ const EditOrphanage = () => {
     const [previewImages, setPreviewImages] = useState<string[]>([]);
 
     useEffect(() => {
-        api.get(`/orphanages/${params.id}`).then(response => {
+        api.get(`/pending/${params.id}`).then(response => {
             setOrphanage(response.data);
         });
     },  [params.id]);
@@ -63,6 +63,11 @@ const EditOrphanage = () => {
             setPosition({latitude: orphanage.latitude, longitude: orphanage.longitude});
         }
     }, [orphanage]);
+
+    const deleteOrphanage = useCallback(async () => {
+        await api.delete(`/orphanages/${params.id}`);
+        history.push("/pending");
+    }, [history, params.id]);
 
     if (!orphanage) {
         return <p>Carregando...</p>;
@@ -118,8 +123,6 @@ const EditOrphanage = () => {
         <PageCreateOrphanage>
 
             <Sidebar />
-
-
 
             <main>
                 <p>Editar perfil de {orphanage.name}</p>
@@ -207,8 +210,13 @@ const EditOrphanage = () => {
                         </InputBlock>
                     </fieldset>
 
+                    <RefuseButton onClick={deleteOrphanage}>
+                        <FiX size={24} color="#FFF" />
+                        Recusar
+                    </RefuseButton>
                     <ConfirmButton type="submit">
-                        Confirmar
+                        <FiCheck size={24} color="#FFF" />
+                        Aceitar
                     </ConfirmButton>
                 </CreateOrphanageForm>
             </main>
@@ -216,4 +224,4 @@ const EditOrphanage = () => {
     );
 }
 
-export default EditOrphanage;
+export default EditPendingOrphanage;

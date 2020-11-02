@@ -5,7 +5,6 @@ export const PageDashboard = styled.div`
     display: flex;
     
     > div {
-        width: 1120px;
         margin: 64px 32px;
 
         overflow: hidden;
@@ -28,22 +27,23 @@ export const PageDashboard = styled.div`
         main {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
         
     }
-    
-    
-    
 `;
 
 export const MapContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     background: #FFF;
     border: 1px solid #D3E2E5;
     border-radius: 20px;
     margin-bottom: 32px;
     z-index: 1;
+    
+    margin-right: 32px;
     
     footer {
         position: relative;
@@ -96,8 +96,6 @@ export const MapContainer = styled.div`
                 }
             }
         }
-        
-  
     }
     
     .leaflet-container {

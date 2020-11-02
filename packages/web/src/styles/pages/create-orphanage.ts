@@ -190,3 +190,31 @@ export const ConfirmButton = styled.button`
         margin-right: 16px;
     }
 `;
+
+export const RefuseButton = styled.button`
+    margin-top: 64px;
+  
+    width: 100%;
+    height: 64px;
+    border: 0;
+    cursor: pointer;
+    background: #FF669D;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-weight: 800;
+    outline: none;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 0.2s;
+    
+    &:hover {
+        background: #d75986;
+    }
+  
+    svg {
+        margin-right: 16px;
+    }
+`;

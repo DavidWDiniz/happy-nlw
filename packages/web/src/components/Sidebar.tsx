@@ -12,18 +12,18 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({isDashboard, initialState}) => {
-    const {goBack} = useHistory();
+    const {goBack, push} = useHistory();
     const {signOut} = useAuth();
     const [active, setActive] = useState(initialState);
 
     function handleButtonRegisteredClick() {
-        !active && setActive(!active)
-        //goback();
+        !active && setActive(!active);
+        push("dashboard");
     }
 
     function handleButtonPendingClick() {
-        active && setActive(!active)
-        //goBack();
+        active && setActive(!active);
+        push("pending");
     }
 
     return (
