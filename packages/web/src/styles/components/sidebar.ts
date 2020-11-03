@@ -56,4 +56,20 @@ export const AppSidebar = styled.aside`
         }
     }
     
+    @media(max-width: 720px) {
+        width: 100vw;
+        height: 32px;
+        
+        flex-direction: row;
+        
+        div {
+            flex-direction: row;
+            
+            button + button {
+                margin-top: 0;
+                margin-left: 16px;
+            }
+        }
+    }
+    
 `;
