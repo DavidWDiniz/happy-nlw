@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const PageCreateOrphanage = styled.div`
+export const PageEditOrphanage = styled.div`
     display: flex;
 `;

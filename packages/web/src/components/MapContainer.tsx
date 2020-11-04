@@ -5,16 +5,17 @@ import mapIcon from "../utils/mapIcon";
 
 import {MapContent, MapStyled} from "../styles/components/MapContainer"
 import {Link} from "react-router-dom";
-import {FiEdit3, FiTrash} from "react-icons/all";
+import {FiArrowRight, FiEdit3, FiTrash} from "react-icons/all";
 
 interface MapProps {
     id: number;
     latitude: number;
     longitude: number;
     name: string;
+    pending?: boolean;
 }
 
-const MapContainer: React.FC<MapProps> = ({id, name, latitude, longitude}) => {
+const MapContainer: React.FC<MapProps> = ({id, name, latitude, longitude, pending = false}) => {
 
     return (
         <MapContent key={id}>
@@ -35,14 +36,22 @@ const MapContainer: React.FC<MapProps> = ({id, name, latitude, longitude}) => {
 
             <footer>
                 <p>{name}</p>
-                <div>
-                    <Link to={`orphanage/update/${id}`}>
-                        <FiEdit3 size={24} color="#15C3D6"/>
-                    </Link>
-                    <Link to={{pathname: `orphanage/delete/${id}`, state: {name}}} >
-                        <FiTrash size={24} color="#15C3D6"/>
-                    </Link>
-                </div>
+                {!pending ? (
+                    <div>
+                        <Link to={`orphanage/update/${id}`}>
+                            <FiEdit3 size={24} color="#15C3D6"/>
+                        </Link>
+                        <Link to={{pathname: `orphanage/delete/${id}`, state: {name}}}>
+                            <FiTrash size={24} color="#15C3D6"/>
+                        </Link>
+                    </div>
+                ) : (
+                    <div>
+                        <Link to={`edit-pending/${id}`}>
+                            <FiArrowRight size={24} color="#15C3D6"/>
+                        </Link>
+                    </div>
+                )}
             </footer>
         </MapContent>
     );

@@ -36,6 +36,7 @@ const Pending = () => {
                                 name={orphanage.name}
                                 latitude={orphanage.latitude}
                                 longitude={orphanage.longitude}
+                                pending
                             />
                         );
                     })}
