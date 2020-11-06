@@ -71,15 +71,15 @@ export const MapContent = styled.div`
     }
     
      @media(max-width: 720px) {
-        
+        margin-right: 0;
         footer {
             width: 300px;
             
             div {
                 flex-direction: column;
-                position: relative;
-                bottom: 0;
-                right: 8px;
+                position: sticky;
+                margin-left: 16px;
+                margin-right: 8px;
                 
                 a {
                 

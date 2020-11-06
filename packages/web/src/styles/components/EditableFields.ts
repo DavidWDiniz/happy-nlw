@@ -17,7 +17,7 @@ export const Container = styled.main`
 export const CreateOrphanageForm = styled.form`
     width: 700px;
     margin: 64px auto;
-
+    z-index: 1;
     background: #FFFFFF;
     border: 1px solid #D3E2E5;
     border-radius: 20px;
@@ -51,6 +51,10 @@ export const CreateOrphanageForm = styled.form`
         border-bottom: 1px solid #D3E2E5;
         margin-bottom: 40px;
         padding-bottom: 24px;
+    }
+    
+    @media(max-width: 720px) {
+        width: auto;
     }
 `;
 

@@ -27,15 +27,21 @@ export const PageDashboard = styled.div`
         main {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            flex-wrap: wrap;
+            justify-content: center;
+            flex-flow: row wrap;
         }
         
     }
     
      @media(max-width: 720px) {
         flex-direction: column;
-        
+        > div {
+            margin: 64px 8px 64px 24px;
+            
+            main {
+                justify-content: space-evenly;
+            }
+        }
         
     }
     

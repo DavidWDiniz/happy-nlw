@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const AppSidebar = styled.aside`
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     height: 100vh;
