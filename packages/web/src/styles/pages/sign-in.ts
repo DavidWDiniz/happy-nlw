@@ -31,6 +31,10 @@ export const Background = styled.div`
         font-weight: 900;
         line-height: 70px;
      }
+     
+     @media(max-width: 720px) {
+        display: none;
+    }
 `;
 
 export const Location = styled.div`

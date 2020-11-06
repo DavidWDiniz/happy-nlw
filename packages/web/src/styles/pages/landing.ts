@@ -45,6 +45,22 @@ export const ContentWrapper = styled.div`
             line-height: 34px;
         }
     }
+    
+     @media(max-width: 720px) {
+     
+        align-items: center;
+        background: none;
+         
+        main {
+            h1 {
+                display: none;
+            }
+            
+            p {
+                display: none;
+            }
+        }
+    }
 `;
 
 export const Location = styled.div`
@@ -62,6 +78,10 @@ export const Location = styled.div`
     
     strong {
         font-weight: 800;
+    }
+    
+     @media(max-width: 720px) {
+        display: none;
     }
 `;
 
@@ -84,6 +104,10 @@ export const EnterApp = styled(Link)`
     
     &:hover {
         background: #96FEFF;
+    }
+    
+    @media(max-width: 720px) {
+        position: relative;
     }
 `;
 
@@ -109,5 +133,9 @@ export const ConfirmButton = styled.button`
     &:hover {
         background: #96FEFF;
         color: #15C3D6;
+    }
+    
+    @media(max-width: 720px) {
+        position: relative;
     }
 `;

@@ -47,6 +47,12 @@ export const PageMap = styled.div`
     .leaflet-container {
         z-index: 5;
     }
+    
+    @media(max-width: 720px) {
+        aside {
+            display: none;
+        }
+    }
 `;
 
 export const CreateOrphanage = styled(Link)`

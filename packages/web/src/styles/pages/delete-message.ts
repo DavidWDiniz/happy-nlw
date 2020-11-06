@@ -54,6 +54,11 @@ export const ContentWrapper = styled.div`
             justify-content: space-between;
         }
     }
+    
+    @media(max-width: 720px) {
+        background: none;
+        align-items: center;
+    }
 `;
 
 export const ConfirmButton = styled.button`
