@@ -20,10 +20,11 @@ Instalação
     `yarn install`
 
 Inicialização do banco de dados e server
+- Na pasta server
 
-- `yarn typeorm migration:run`
+    `yarn typeorm migration:run`
    
--  `yarn dev`
+    `yarn dev`
 
 Inicializaçao da página
 
