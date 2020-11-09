@@ -12,7 +12,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React Native](https://facebook.github.io/react-native/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-##Como utilizar
+## Como utilizar
 
 Instalação
 - Na pasta principal

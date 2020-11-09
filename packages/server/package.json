@@ -7,7 +7,8 @@
     "start": "node dist/server.js",
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
-    "typeorm": "tsnd ./node_modules/typeorm/cli.js"
+    "typeorm": "tsnd ./node_modules/typeorm/cli.js",
+    "seed": "tsnd --transpile-only --ignore-watch node_modules src/database/seed/user.seed.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
