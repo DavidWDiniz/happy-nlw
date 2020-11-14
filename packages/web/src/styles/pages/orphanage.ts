@@ -7,6 +7,10 @@ export const PageOrphanage = styled.div`
     main {
         flex: 1;
     }
+    
+    @media(max-width: 720px) {
+        flex-direction: column;
+    }
 `;
 
 export const OrphanageDetails = styled.div`
