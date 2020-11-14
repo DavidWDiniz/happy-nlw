@@ -12,7 +12,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React Native](https://facebook.github.io/react-native/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-##Como utilizar
+## Como utilizar
 
 Instalação
 - Na pasta principal
@@ -20,10 +20,11 @@ Instalação
     `yarn install`
 
 Inicialização do banco de dados e server
+- Na pasta server
 
-- `yarn typeorm migration:run`
+    `yarn typeorm migration:run`
    
--  `yarn dev`
+    `yarn dev`
 
 Inicializaçao da página
 

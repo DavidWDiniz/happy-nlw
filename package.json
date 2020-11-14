@@ -7,7 +7,9 @@
     "packages": ["packages/*"],
     "nohoist": [
       "**/typeorm/**",
-      "**/typeorm"
+      "**/typeorm",
+      "**/styled-components/**",
+      "**/styled-components"
     ]
   }
 }
