@@ -1,7 +1,7 @@
 
 ## Projeto
 
-O Happy é uma aplicação que conecta pessoas à casas de acolhimento institucional para fazer o dia de muitas crianças mais feliz
+O Happy é uma aplicação que conecta pessoas à casas de acolhimento institucional para fazer o dia de muitas crianças mais feliz.
 
 ## Tecnologias
 
@@ -18,15 +18,21 @@ Instalação
 - Na pasta principal
 
     `yarn install`
+   
+- Por algum motivo que ainda não descobri a causa é necessário remover a pasta node_modules em packages/web/node_modules/styled-components/node_modules
 
-Inicialização do banco de dados e server
+- Para a criação do banco foi utilizado o postgres SQL. Você deve criar um banco e configurar o arquivo .env de acordo com os seus dados.
+
+Inicialização do banco de dados e servidor
 - Na pasta server
 
     `yarn typeorm migration:run`
+    
+    `yarn seed`
    
     `yarn dev`
 
-Inicializaçao da página
+Inicialização da página
 
 - Na pasta web
 
@@ -38,9 +44,9 @@ Inicializaçao da página
     
     `yarn android`
 
-Acesso a área restrita (web)
+Acesso à área restrita (WEB)
 
-- Para acessar a área restrita, insira as seguintes credênciais
+- Para acessar a área restrita, insira as seguintes credenciais.
 
     `email: admin@happy.com`
     
